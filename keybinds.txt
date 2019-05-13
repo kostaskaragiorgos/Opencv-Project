@@ -1,0 +1,35 @@
+File menu
+=======================
+Load Image Alt+O
+Save Image Ctrl + S
+Exit = Alt + F4
+======================
+Show menu
+======================
+Show Image  Ctrl+F5
+Show Gray  Ctrl + G
+Show HSV Ctrl + F9
+Show LAB Ctrl + L
+=====================
+Histograms menu
+=====================
+Grayscale Histograms Alt + H
+Color Histograms Alt + C
+Histogram Equalization Alt + E
+==============================
+Rotation menu
+====================
+45 Degrees Ctrl + 4
+90 Degrees Ctrl + 9
+180 Degrees Ctrl + R
+===================
+Show menu
+===================
+Show Width Ctrl + W
+Show Height Ctrl + H
+Show Channels Ctrl + C
+=======================
+About menu
+==============
+About Ctrl + I
+Help Ctrl + F1 
