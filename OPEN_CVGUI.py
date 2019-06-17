@@ -43,6 +43,13 @@ class OPEN_CV():
         self.rotation_menu.add_command(label = "180 Degrees",accelerator ='Ctrl + R',command = self.dec180)
         self.menu.add_cascade(label = "Rotation",menu = self.rotation_menu)
         
+        self.resize_menu = Menu(self.menu , tearoff = 0)
+        self.resize_menu.add_command(label = "25% smaller")
+        self.resize_menu.add_command(label = "50% smaller")
+        self.resize_menu.add_command(label = "75% smaller")
+        self.resize_menu.add_command(label = "Custom size")
+        self.menu.add_cascade(label = "Resize",menu = self.resize_menu)
+        
         self.shape_menu = Menu(self.menu,tearoff = 0)
         self.shape_menu.add_command(label  = "Show Width",accelerator ='Ctrl + W',command = self.showwidth)
         self.shape_menu.add_command(label = "Show Height",accelerator = 'Ctrl + H',command = self.showheight)
