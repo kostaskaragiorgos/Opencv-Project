@@ -96,7 +96,7 @@ class OPEN_CV():
     def loadimg(self):
         self.img = filedialog.askopenfilename(initialdir="/",title="Select image file",
                                         filetypes=(("image files","*.jpg"),("all files","*.*")))
-        if  ("jpg" in self.img or  "JPG" in self.img) == True:
+        if self.img.endswith('.jpg'):
             self.flagfile = 1
 
             self.imgr = cv2.imread(self.img)
