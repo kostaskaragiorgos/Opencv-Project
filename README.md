@@ -9,3 +9,7 @@ An all in one project with the "open cv" basic knowledge
   <li> numpy </li>
   <li> matplotlib </li>
 </ul>
+
+**Current Version**
+
+<p><img src ="opencv.png" title = "Open cv Project Version"/> </p>
