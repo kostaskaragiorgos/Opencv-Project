@@ -2,6 +2,12 @@
 
 An all in one project with the "open cv" basic knowledge
 
+## FILES 
+<ul>
+ <li> OPEN_CVGUI.py(main file) </li>
+ <li> keybinds.txt(.txt keybinds file) </li>
+</ul>
+
 ## Dependencies
 
  <ul>
