@@ -164,6 +164,7 @@ class OPEN_CV():
                 plt.plot(hist , color = color)
                 plt.xlim([0,256])
             plt.show()
+            
     def histoequal(self):
         if self.flagfile == 0:
             msg.showerror("Error","Not image inserted")
