@@ -207,13 +207,22 @@ class OPEN_CV():
                 msg.showwarning("NOT SAVED","The image is not saved")
     
     def showwidth(self):
-        msg.showinfo("Width","Width:"+str(self.imgr.shape[1]))
+        if self.flagfile == 0 :
+            msg.showerror("Error","Not image inserted")
+        else:
+            msg.showinfo("Width","Width:"+str(self.imgr.shape[1]))
     
     def showheight(self):
-        msg.showinfo("Height","Height"+str(self.imgr.shape[0]))
+        if self.flagfile == 0 :
+            msg.showerror("Error","Not image inserted")
+        else:
+            msg.showinfo("Height","Height"+str(self.imgr.shape[0]))
     
     def showchannels(self):
-        msg.showinfo("Number of Channels","Channels"+str(self.imgr.shape[2]))
+        if self.flagfile == 0 :
+            msg.showerror("Error","Not image inserted")
+        else:
+            msg.showinfo("Number of Channels","Channels"+str(self.imgr.shape[2]))
     
     def saveimg(self):
         if self.flagfile == 0:
