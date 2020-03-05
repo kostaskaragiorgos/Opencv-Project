@@ -7,6 +7,9 @@ from tkinter import filedialog
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
+def aboutmenu():
+    """ about menu function """
+    msg.showinfo("About", "OPEN CV \nVersion 1.0")
 class OPEN_CV():
     """  all in one open cv project class """
     def __init__(self, master):
@@ -52,7 +55,7 @@ class OPEN_CV():
         self.shape_menu.add_command(label="Show Channels", accelerator='Ctrl + C', command=self.showchannels)
         self.menu.add_cascade(label="Shape", menu=self.shape_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
         self.about_menu.add_command(label="Help", accelerator='Ctrl+F1', command=self.helpmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
         self.master.config(menu=self.menu)
@@ -61,29 +64,29 @@ class OPEN_CV():
         self.master.bind('<Alt-o>', lambda event: self.loadimg())
         self.master.bind('<Control-s>', lambda event: self.saveimg())
         #show menu
-        self.master.bind('<Control-F5>', lambda event:self.showimg())
-        self.master.bind('<Control-g>', lambda event:self.showgr())
-        self.master.bind('<Control-F9>', lambda event:self.showhsv())
-        self.master.bind('<Control-l>', lambda event:self.showlab())
+        self.master.bind('<Control-F5>', lambda event: self.showimg())
+        self.master.bind('<Control-g>', lambda event: self.showgr())
+        self.master.bind('<Control-F9>', lambda event: self.showhsv())
+        self.master.bind('<Control-l>', lambda event: self.showlab())
         #histogram
-        self.master.bind('<Alt-h>', lambda event:self.grhisto())
-        self.master.bind('<Alt-c>', lambda event:self.colrhisto())
-        self.master.bind('<Alt-e>', lambda event:self.histoequal())
+        self.master.bind('<Alt-h>', lambda event: self.grhisto())
+        self.master.bind('<Alt-c>', lambda event: self.colrhisto())
+        self.master.bind('<Alt-e>', lambda event: self.histoequal())
         #rotation
-        self.master.bind('<Control-4>', lambda event:self.dec45())
-        self.master.bind('<Control-9>', lambda event:self.dec90())
-        self.master.bind('<Control-R>', lambda event:self.dec180())
+        self.master.bind('<Control-4>', lambda event: self.dec45())
+        self.master.bind('<Control-9>', lambda event: self.dec90())
+        self.master.bind('<Control-R>', lambda event: self.dec180())
         #shape menu
-        self.master.bind('<Control-w>', lambda event:self.showwidth())
-        self.master.bind('<Control-h>', lambda event:self.showheight())
-        self.master.bind('<Control-c>', lambda event:self.showchannels())
+        self.master.bind('<Control-w>', lambda event: self.showwidth())
+        self.master.bind('<Control-h>', lambda event: self.showheight())
+        self.master.bind('<Control-c>', lambda event: self.showchannels())
         #about menu
-        self.master.bind('<Control-i>', lambda event:self.aboutmenu())
+        self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
     def loadimg(self):
         """ loads img """
         self.img = filedialog.askopenfilename(initialdir="/", title="Select image file",
-                                        filetypes=(("image files", "*.jpg"),("all files", "*.*")))
+                                              filetypes=(("image files", "*.jpg"),("all files", "*.*")))
         if self.img.endswith('.jpg'):
             self.flagfile = 1
             self.imgr = cv2.imread(self.img)
@@ -131,7 +134,7 @@ class OPEN_CV():
         if self.flagfile == 0:
             msg.showerror("Error", "Not image inserted")
         else:
-            hist = cv2.calcHist([self.imgr], [0], None, [256], [0,256])
+            hist = cv2.calcHist([self.imgr], [0], None, [256], [0, 256])
             plt.figure()
             plt.title("Grayscale Histogram")
             plt.plot(hist)
@@ -146,8 +149,8 @@ class OPEN_CV():
             plt.figure()
             plt.title("Color Histogram")
             for (chan, color) in zip(chans, colors):
-                hist = cv2.calcHist([chan], [0], None, [256], [0,256])
-                plt.plot(hist, color = color)
+                hist = cv2.calcHist([chan], [0], None, [256], [0, 256])
+                plt.plot(hist, color=color)
                 plt.xlim([0, 256])
             plt.show()  
     def histoequal(self):
@@ -156,7 +159,7 @@ class OPEN_CV():
             msg.showerror("Error", "Not image inserted")
         else:
             imGC = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2GRAY)
-            eq  = cv2.equalizeHist(imGC)
+            eq = cv2.equalizeHist(imGC)
             cv2.imshow("Histogram Equalization", np.hstack([imGC, eq]))
     def showgr(self):
         """ shows gray img"""
@@ -165,7 +168,7 @@ class OPEN_CV():
         else:
             imGC = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2GRAY)
             cv2.imshow("GRAY", imGC)
-            if msg.askyesno("Save Gray image", "Do you want to save the image?") == True:
+            if msg.askyesno("Save Gray image", "Do you want to save the image?"):
                 print("save")
             else:
                 msg.showwarning("NOT SAVED", "The image is not saved")
@@ -176,7 +179,7 @@ class OPEN_CV():
         else:
             hsv = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2HSV)
             cv2.imshow("HSV", hsv)
-            if msg.askyesno("Save HSV image", "Do you want to save the image?") == True:
+            if msg.askyesno("Save HSV image", "Do you want to save the image?"):
                 print("save")
             else:
                 msg.showwarning("NOT SAVED", "The image is not saved")  
@@ -187,7 +190,7 @@ class OPEN_CV():
         else:
             lab = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2LAB)
             cv2.imshow("L*A*B", lab)
-            if msg.askyesno("Save LAB image", "Do you want to save the image?") == True:
+            if msg.askyesno("Save LAB image", "Do you want to save the image?"):
                 print("save")
             else:
                 msg.showwarning("NOT SAVED", "The image is not saved")
@@ -217,9 +220,6 @@ class OPEN_CV():
         """ exit menu function"""
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
-    def aboutmenu(self):
-        """ about menu function """
-        msg.showinfo("About", "OPEN CV \nVersion 1.0")
     def helpmenu(self):
         """ help menu function """
         pass
