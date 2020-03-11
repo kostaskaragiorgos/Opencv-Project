@@ -1,9 +1,21 @@
 # Opencv-Project
 
+An all in one project with the "open cv" basic knowledge
+
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 
+# Table of contents
 
-An all in one project with the "open cv" basic knowledge
+<!--ts-->
+  * [Opencv-Project](#Opencv-Project)
+  * [Table of contents](#Table_of_contents)
+  * [FILES](#FILES)
+  * [Dependencies](#Dependencies)
+  * [Current Version](#Current_Version)
+  * [Radon](#Radon)
+  * [Keybinds](#Keybinds)
+  * [License](#License)
+<!--ts-->
 
 ## FILES 
 <ul>
@@ -19,11 +31,11 @@ An all in one project with the "open cv" basic knowledge
   <li> matplotlib </li>
 </ul>
 
-**Current Version**
+## Current Version
 
 <p><img src ="opencv.png" title = "Open cv Project Version"/> </p>
 
-**Radon**
+## Radon
 
 <p><img src="opencv radon cc.py" title = "Open cv Radon CC"/> </p>
 
