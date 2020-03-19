@@ -9,7 +9,7 @@ An all in one project with the "open cv" basic knowledge
 <!--ts-->
   * [Opencv-Project](#Opencv-Project)
   * [Table of contents](#Table_of_contents)
-  * [FILES](#FILES)
+  * [Files](#Files)
   * [Dependencies](#Dependencies)
   * [Current Version](#Current_Version)
   * [Radon](#Radon)
@@ -17,7 +17,7 @@ An all in one project with the "open cv" basic knowledge
   * [License](#License)
 <!--ts-->
 
-## FILES 
+## Files
 <ul>
  <li> OPEN_CVGUI.py(main file) </li>
  <li> keybinds.txt(.txt keybinds file) </li>
