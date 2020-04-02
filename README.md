@@ -33,14 +33,14 @@ An all in one project with the "open cv" basic knowledge
 
 ## Current Version
 
-<p><img src ="opencv.png" title = "Open cv Project Version"/> </p>
+<p><img src ="images/opencv.png" title = "Open cv Project Version"/> </p>
 
 ## Radon
 
-<p><img src="opencv radon cc.png" title = "Open cv Radon CC"/> </p>
-<p><img src="opencv radon raw.png" title = "Open cv Radon Raw"/> </p>
-<p><img src="opencv radon hal.png" title = "Open cv Radon Hal"/> </p>
-<p><img src="opencv radon mi.png" title = "Open cv Radon  Mi"/></p>
+<p><img src="images/opencv radon cc.png" title = "Open cv Radon CC"/> </p>
+<p><img src="images/opencv radon raw.png" title = "Open cv Radon Raw"/> </p>
+<p><img src="images/opencv radon hal.png" title = "Open cv Radon Hal"/> </p>
+<p><img src="images/opencv radon mi.png" title = "Open cv Radon  Mi"/></p>
 
 
 ## Keybinds 
