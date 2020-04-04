@@ -19,6 +19,7 @@ An all in one project with the "open cv" basic knowledge
 
 ## Files
 <ul>
+ <li> images (images folder) </li>
  <li> OPEN_CVGUI.py(main file) </li>
  <li> keybinds.txt(.txt keybinds file) </li>
 </ul>
