@@ -9,10 +9,14 @@ An all in one project with the "open cv" basic knowledge
 <!--ts-->
   * [Opencv-Project](#Opencv-Project)
   * [Table of contents](#Table_of_contents)
-  * [Files](#Files)
+  * [Files/Folders](#Files/Folders)
   * [Dependencies](#Dependencies)
   * [Current Version](#Current_Version)
   * [Radon](#Radon)
+   * [Radon_cc](#Radon_cc)
+   * [Radon_raw](#Radon_raw)
+   * [Radon_hal](#Radon_hal)
+   * [Radon_mi](#Radon_mi)
   * [Keybinds](#Keybinds)
   * [License](#License)
 <!--ts-->
@@ -38,9 +42,20 @@ An all in one project with the "open cv" basic knowledge
 
 ## Radon
 
+### Radon_cc
+
 <p><img src="images/opencv radon cc.png" title = "Open cv Radon CC"/> </p>
+
+### Radon_raw
+
 <p><img src="images/opencv radon raw.png" title = "Open cv Radon Raw"/> </p>
+
+### Radon_hal
+
 <p><img src="images/opencv radon hal.png" title = "Open cv Radon Hal"/> </p>
+
+### Radon_mi
+
 <p><img src="images/opencv radon mi.png" title = "Open cv Radon  Mi"/></p>
 
 
