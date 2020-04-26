@@ -85,13 +85,18 @@ class OPEN_CV():
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
     def loadimg(self):
         """ loads img """
-        self.img = filedialog.askopenfilename(initialdir="/", title="Select image file",
-                                              filetypes=(("image files", "*.jpg"),("all files", "*.*")))
-        if self.img.endswith('.jpg'):
-            self.flagfile = 1
-            self.imgr = cv2.imread(self.img)
+        if self.flagfile == 0:
+            self.img = filedialog.askopenfilename(initialdir="/", title="Select image file",
+                                                  filetypes=(("image files", "*.jpg"),("all files", "*.*")))
+            if self.img.endswith('.jpg'):
+                self.flagfile = 1
+                self.imgr = cv2.imread(self.img)
+                msg.showinfo("SUCCESS", "IMAGE SUCCESSFULLY LOADED")
+            else:
+                msg.showerror("ERROR", "NO IMAGE")
         else:
-            self.flagfile = 0
+            msg.showerror("ERROR", "AN IMAGE IS ALREADY OPEN")
+            
     def showimg(self):
         """ shows img """
         if self.flagfile == 0:
