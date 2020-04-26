@@ -29,15 +29,12 @@ class OPEN_CV():
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.show_menu = Menu(self.menu, tearoff=0)
         self.show_menu.add_command(label="Show Image", accelerator='Ctrl+F5', command=self.showimg)
-<<<<<<< HEAD
         self.show_menu.add_command(label="Show Gray", accelerator='Ctrl+G', command=lambda: self.showimagebytype(cv2.COLOR_BGR2GRAY))
         self.show_menu.add_command(label="Show HSV", accelerator='Ctrl+F9', command=lambda: self.showimagebytype(cv2.COLOR_BGR2HSV))
         self.show_menu.add_command(label="Show LAB", accelerator='Ctrl + L', command=lambda: self.showimagebytype(cv2.COLOR_BGR2LAB))
-=======
         self.show_menu.add_command(label="Show Gray", accelerator='Ctrl+G', command=self.showgr)
         self.show_menu.add_command(label="Show HSV", accelerator='Ctrl+F9', command=self.showhsv)
         self.show_menu.add_command(label="Show LAB", accelerator='Ctrl+L', command=self.showlab)
->>>>>>> 1eafc7bcba6761862f665b6a5aa3248f52839605
         self.menu.add_cascade(label="Show", menu=self.show_menu)
         self.show_histogram = Menu(self.menu, tearoff=0)
         self.show_histogram.add_command(label="Grayscale Histograms", accelerator='Alt+H', command=self.grhisto)
