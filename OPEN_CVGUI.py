@@ -22,6 +22,7 @@ class OPEN_CV():
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="Load Image", accelerator='Alt+O', command=self.loadimg)
+        self.file_menu.add_command(label="Close Image", accelerator='Ctrl+F4', command=self.closef)
         self.file_menu.add_command(label="Save Image", accelerator='Ctrl+S', command=self.saveimg)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
@@ -59,6 +60,7 @@ class OPEN_CV():
         self.master.config(menu=self.menu)
         #file menu 
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
+        self.master.bind('<Control-F4>', lambda event: self.closef())
         self.master.bind('<Alt-o>', lambda event: self.loadimg())
         self.master.bind('<Control-s>', lambda event: self.saveimg())
         #show menu
@@ -81,6 +83,14 @@ class OPEN_CV():
         #about menu
         self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
+    
+    def closef(self):
+        if self.img == "":
+            msg.showerror("ERROR", "NO FILE TO CLOSE")
+        else:
+            self.img = ""
+            msg.showinfo("SUCCESS", "YOUR IMAGE FILE HAS SUCCESSFULLY CLOSED")
+    
     def loadimg(self):
         """ loads img """
         if self.img == "":
