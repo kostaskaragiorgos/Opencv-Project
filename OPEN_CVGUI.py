@@ -39,9 +39,9 @@ class OPEN_CV():
         self.show_histogram.add_command(label="Histogram Equalization", accelerator='Alt + E', command=self.histoequal)
         self.menu.add_cascade(label="Histograms", menu=self.show_histogram)
         self.rotation_menu = Menu(self.menu, tearoff=0)
-        self.rotation_menu.add_command(label="45 Degrees", accelerator='Ctrl + 4', command=self.dec45)
-        self.rotation_menu.add_command(label="90 Degrees", accelerator='Ctrl + 9', command=self.dec90)
-        self.rotation_menu.add_command(label="180 Degrees", accelerator='Ctrl + R', command=self.dec180)
+        self.rotation_menu.add_command(label="45 Degrees", accelerator='Ctrl + 4', command=lambda: self.rotation(45))
+        self.rotation_menu.add_command(label="90 Degrees", accelerator='Ctrl + 9', command=lambda: self.rotation(90))
+        self.rotation_menu.add_command(label="180 Degrees", accelerator='Ctrl + R', command=lambda: self.rotation(180))
         self.menu.add_cascade(label="Rotation", menu=self.rotation_menu)
         self.resize_menu = Menu(self.menu, tearoff=0)
         self.resize_menu.add_command(label="25% smaller")
@@ -73,9 +73,9 @@ class OPEN_CV():
         self.master.bind('<Alt-c>', lambda event: self.colrhisto())
         self.master.bind('<Alt-e>', lambda event: self.histoequal())
         #rotation
-        self.master.bind('<Control-4>', lambda event: self.dec45())
-        self.master.bind('<Control-9>', lambda event: self.dec90())
-        self.master.bind('<Control-R>', lambda event: self.dec180())
+        self.master.bind('<Control-4>', lambda event: self.rotation(45))
+        self.master.bind('<Control-9>', lambda event: self.rotation(90))
+        self.master.bind('<Control-R>', lambda event: self.rotation(180))
         #shape menu
         self.master.bind('<Control-w>', lambda event: self.showwidth())
         self.master.bind('<Control-h>', lambda event: self.showheight())
@@ -99,36 +99,16 @@ class OPEN_CV():
         else:
             self.imgr = cv2.imread(self.img)
             cv2.imshow("Image", self.imgr)
-    def dec45(self):
-        """ rotates the image by 45 dec """ 
+    def rotation(self, dec):
+        """ rotates the image by dec """
         if self.flagfile == 0:
             msg.showerror("Error", "Not image inserted")
         else:
             (h, w) = self.imgr.shape[:2]
             center = (w//2, h//2)
-            M = cv2.getRotationMatrix2D(center, 45, 1.0)
+            M = cv2.getRotationMatrix2D(center, dec, 1.0)
             rotated = cv2.warpAffine(self.imgr, M, (w, h))
-            cv2.imshow("Rotated by 45 Dec", rotated)
-    def dec90(self):
-        """ rotates the image by 90 dec """
-        if self.flagfile == 0:
-            msg.showerror("Error", "Not image inserted")
-        else:
-            (h, w) = self.imgr.shape[:2]
-            center = (w//2, h//2)
-            M = cv2.getRotationMatrix2D(center, 90, 1.0)
-            rotated = cv2.warpAffine(self.imgr, M, (w, h))
-            cv2.imshow("Rotated by 90 Dec", rotated)
-    def dec180(self):
-        """ rotates the image by 180 dec """
-        if self.flagfile == 0:
-            msg.showerror("Error", "Not image inserted")
-        else:
-            (h, w) = self.imgr.shape[:2]
-            center = (w//2, h//2)
-            M = cv2.getRotationMatrix2D(center, 180, 1.0)
-            rotated = cv2.warpAffine(self.imgr, M, (w, h))
-            cv2.imshow("Rotated by 180 Dec", rotated)
+            cv2.imshow("Rotated by"+str(dec)+"Dec", rotated)
     def grhisto(self):
         """ shows grayscale histogram """ 
         if self.flagfile == 0:
