@@ -29,9 +29,9 @@ class OPEN_CV():
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.show_menu = Menu(self.menu, tearoff=0)
         self.show_menu.add_command(label="Show Image", accelerator='Ctrl+F5', command=self.showimg)
-        self.show_menu.add_command(label="Show Gray", accelerator='Ctrl+G', command=self.showgr)
-        self.show_menu.add_command(label="Show HSV", accelerator='Ctrl+F9', command=self.showhsv)
-        self.show_menu.add_command(label="Show LAB", accelerator='Ctrl + L', command=self.showlab)
+        self.show_menu.add_command(label="Show Gray", accelerator='Ctrl+G', command=lambda: self.showimagebytype(cv2.COLOR_BGR2GRAY))
+        self.show_menu.add_command(label="Show HSV", accelerator='Ctrl+F9', command=lambda: self.showimagebytype(cv2.COLOR_BGR2HSV))
+        self.show_menu.add_command(label="Show LAB", accelerator='Ctrl + L', command=lambda: self.showimagebytype(cv2.COLOR_BGR2LAB))
         self.menu.add_cascade(label="Show", menu=self.show_menu)
         self.show_histogram = Menu(self.menu, tearoff=0)
         self.show_histogram.add_command(label="Grayscale Histograms", accelerator='Alt + H', command=self.grhisto)
@@ -65,9 +65,9 @@ class OPEN_CV():
         self.master.bind('<Control-s>', lambda event: self.saveimg())
         #show menu
         self.master.bind('<Control-F5>', lambda event: self.showimg())
-        self.master.bind('<Control-g>', lambda event: self.showgr())
-        self.master.bind('<Control-F9>', lambda event: self.showhsv())
-        self.master.bind('<Control-l>', lambda event: self.showlab())
+        self.master.bind('<Control-g>', lambda event: self.showimagebytype(cv2.COLOR_BGR2GRAY))
+        self.master.bind('<Control-F9>', lambda event: self.showimagebytype(cv2.COLOR_BGR2HSV))
+        self.master.bind('<Control-l>', lambda event: self.showimagebytype(cv2.COLOR_BGR2LAB))
         #histogram
         self.master.bind('<Alt-h>', lambda event: self.grhisto())
         self.master.bind('<Alt-c>', lambda event: self.colrhisto())
@@ -141,39 +141,13 @@ class OPEN_CV():
             imGC = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2GRAY)
             eq = cv2.equalizeHist(imGC)
             cv2.imshow("Histogram Equalization", np.hstack([imGC, eq]))
-    def showgr(self):
-        """ shows gray img"""
+    def showimagebytype(self, type):
+        """ shows img by type"""
         if self.flagfile == 0:
             msg.showerror("Error", "Not image inserted")
         else:
-            imGC = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2GRAY)
-            cv2.imshow("GRAY", imGC)
-            if msg.askyesno("Save Gray image", "Do you want to save the image?"):
-                print("save")
-            else:
-                msg.showwarning("NOT SAVED", "The image is not saved")
-    def showhsv(self):
-        """ shows hsv img """
-        if self.flagfile == 0:
-            msg.showerror("Error", "Not image inserted")
-        else:
-            hsv = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2HSV)
-            cv2.imshow("HSV", hsv)
-            if msg.askyesno("Save HSV image", "Do you want to save the image?"):
-                print("save")
-            else:
-                msg.showwarning("NOT SAVED", "The image is not saved")  
-    def showlab(self):
-        """ Shows LAB img"""
-        if self.flagfile == 0:
-            msg.showerror("Error", "Not image inserted")
-        else:
-            lab = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2LAB)
-            cv2.imshow("L*A*B", lab)
-            if msg.askyesno("Save LAB image", "Do you want to save the image?"):
-                print("save")
-            else:
-                msg.showwarning("NOT SAVED", "The image is not saved")
+            imGC = cv2.cvtColor(self.imgr, type)
+            cv2.imshow("IMAGE", imGC)
     def showshape(self, shape):
         """ shows the width or height or channel's number of an image """
         if self.flagfile == 0:
