@@ -18,8 +18,6 @@ class OPEN_CV():
         self.master.geometry("250x120")
         self.master.resizable(False, False)
         self.img = ""
-        self.imgr = ""
-        self.flagfile = 0
         # menu
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
@@ -85,11 +83,10 @@ class OPEN_CV():
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
     def loadimg(self):
         """ loads img """
-        if self.flagfile == 0:
+        if self.img == "":
             self.img = filedialog.askopenfilename(initialdir="/", title="Select image file",
                                                   filetypes=(("image files", "*.jpg"),("all files", "*.*")))
             if self.img.endswith('.jpg'):
-                self.flagfile = 1
                 self.imgr = cv2.imread(self.img)
                 msg.showinfo("SUCCESS", "IMAGE SUCCESSFULLY LOADED")
             else:
@@ -99,14 +96,14 @@ class OPEN_CV():
             
     def showimg(self):
         """ shows img """
-        if self.flagfile == 0:
+        if self.img == "":
             msg.showerror("Error", "Not image inserted")
         else:
             self.imgr = cv2.imread(self.img)
             cv2.imshow("Image", self.imgr)
     def rotation(self, dec):
         """ rotates the image by dec """
-        if self.flagfile == 0:
+        if self.img == "":
             msg.showerror("Error", "Not image inserted")
         else:
             (h, w) = self.imgr.shape[:2]
@@ -116,7 +113,7 @@ class OPEN_CV():
             cv2.imshow("Rotated by"+str(dec)+"Dec", rotated)
     def grhisto(self):
         """ shows grayscale histogram """ 
-        if self.flagfile == 0:
+        if self.img == "":
             msg.showerror("Error", "Not image inserted")
         else:
             hist = cv2.calcHist([self.imgr], [0], None, [256], [0, 256])
@@ -126,7 +123,7 @@ class OPEN_CV():
             plt.show()
     def colrhisto(self):
         """ shows rgb histogram """
-        if self.flagfile == 0:
+        if self.img == "":
             msg.showerror("Error", "Not image inserted")
         else:
             chans = cv2.split(self.imgr)
@@ -140,7 +137,7 @@ class OPEN_CV():
             plt.show()  
     def histoequal(self):
         """ shows histogram equalization """
-        if self.flagfile == 0:
+        if self.img == "":
             msg.showerror("Error", "Not image inserted")
         else:
             imGC = cv2.cvtColor(self.imgr, cv2.COLOR_BGR2GRAY)
@@ -148,20 +145,20 @@ class OPEN_CV():
             cv2.imshow("Histogram Equalization", np.hstack([imGC, eq]))
     def showimagebytype(self, type):
         """ shows img by type"""
-        if self.flagfile == 0:
+        if self.img == "":
             msg.showerror("Error", "Not image inserted")
         else:
             imGC = cv2.cvtColor(self.imgr, type)
             cv2.imshow("IMAGE", imGC)
     def showshape(self, shape):
         """ shows the width or height or channel's number of an image """
-        if self.flagfile == 0:
+        if self.img == "":
             msg.showerror("Error", "Not image inserted")
         else:
             msg.showinfo("Width", "Width:"+str(self.imgr.shape[shape]))
     def saveimg(self):
         """ saves img """
-        if self.flagfile == 0:
+        if self.img == "":
             msg.showerror("Error", "Not image inserted")
     def exitmenu(self):
         """ exit menu function"""
