@@ -52,7 +52,7 @@ class OPEN_CV():
         self.shape_menu = Menu(self.menu, tearoff=0)
         self.shape_menu.add_command(label="Show Width", accelerator='Ctrl + W', command=lambda: self.showshape(0))
         self.shape_menu.add_command(label="Show Height", accelerator='Ctrl + H', command=lambda: self.showshape(1))
-        self.shape_menu.add_command(label="Show Channels", accelerator='Ctrl + C', command=lamda: self.showshape(2))
+        self.shape_menu.add_command(label="Show Channels", accelerator='Ctrl + C', command=lambda: self.showshape(2))
         self.menu.add_cascade(label="Shape", menu=self.shape_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
