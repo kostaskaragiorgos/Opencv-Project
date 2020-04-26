@@ -50,9 +50,9 @@ class OPEN_CV():
         self.resize_menu.add_command(label="Custom size")
         self.menu.add_cascade(label="Resize", menu=self.resize_menu)
         self.shape_menu = Menu(self.menu, tearoff=0)
-        self.shape_menu.add_command(label="Show Width", accelerator='Ctrl + W', command=self.showwidth)
-        self.shape_menu.add_command(label="Show Height", accelerator='Ctrl + H', command=self.showheight)
-        self.shape_menu.add_command(label="Show Channels", accelerator='Ctrl + C', command=self.showchannels)
+        self.shape_menu.add_command(label="Show Width", accelerator='Ctrl + W', command=lambda: self.showshape(0))
+        self.shape_menu.add_command(label="Show Height", accelerator='Ctrl + H', command=lambda: self.showshape(1))
+        self.shape_menu.add_command(label="Show Channels", accelerator='Ctrl + C', command=lamda: self.showshape(2))
         self.menu.add_cascade(label="Shape", menu=self.shape_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
@@ -77,9 +77,9 @@ class OPEN_CV():
         self.master.bind('<Control-9>', lambda event: self.rotation(90))
         self.master.bind('<Control-R>', lambda event: self.rotation(180))
         #shape menu
-        self.master.bind('<Control-w>', lambda event: self.showwidth())
-        self.master.bind('<Control-h>', lambda event: self.showheight())
-        self.master.bind('<Control-c>', lambda event: self.showchannels())
+        self.master.bind('<Control-w>', lambda event: self.showshape(0))
+        self.master.bind('<Control-h>', lambda event: self.showshape(1))
+        self.master.bind('<Control-c>', lambda event: self.showshape(2))
         #about menu
         self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
@@ -174,24 +174,12 @@ class OPEN_CV():
                 print("save")
             else:
                 msg.showwarning("NOT SAVED", "The image is not saved")
-    def showwidth(self):
-        """ shows the width of an image """ 
+    def showshape(self, shape):
+        """ shows the width or height or channel's number of an image """
         if self.flagfile == 0:
             msg.showerror("Error", "Not image inserted")
         else:
-            msg.showinfo("Width", "Width:"+str(self.imgr.shape[1]))
-    def showheight(self):
-        """ shows height of an image """
-        if self.flagfile == 0:
-            msg.showerror("Error", "Not image inserted")
-        else:
-            msg.showinfo("Height", "Height"+str(self.imgr.shape[0]))
-    def showchannels(self):
-        """ Show img number of channels example r,g,b img = 3 """
-        if self.flagfile == 0:
-            msg.showerror("Error", "Not image inserted")
-        else:
-            msg.showinfo("Number of Channels", "Channels"+str(self.imgr.shape[2]))
+            msg.showinfo("Width", "Width:"+str(self.imgr.shape[shape]))
     def saveimg(self):
         """ saves img """
         if self.flagfile == 0:
