@@ -28,13 +28,24 @@ An all in one project with the "open cv" basic knowledge
  <li> keybinds.txt(.txt keybinds file) </li>
 </ul>
 
+
+
 ## Dependencies
+
+Install the dependencies
 
  <ul>
   <li> OpenCv </li>
   <li> numpy </li>
   <li> matplotlib </li>
 </ul>
+
+or run
+
+
+```shell
+pip install -r requirements.txt
+```
 
 ## Current Version
 
