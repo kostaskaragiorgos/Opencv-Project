@@ -85,6 +85,7 @@ class OPEN_CV():
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
     
     def closef(self):
+        """ closes an open image"""
         if self.img == "":
             msg.showerror("ERROR", "NO FILE TO CLOSE")
         else:
@@ -109,7 +110,6 @@ class OPEN_CV():
         if self.img == "":
             msg.showerror("Error", "Not image inserted")
         else:
-            self.imgr = cv2.imread(self.img)
             cv2.imshow("Image", self.imgr)
     def rotation(self, dec):
         """ rotates the image by dec """
